@@ -4,7 +4,12 @@ const axios = require("axios");
 const bodyParser = require("body-parser");
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+    origin: "https://digitalcc-ncs.crm5.dynamics.com", 
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
+}));
 app.use(bodyParser.urlencoded({ extended: true })); // Parse form data
 app.use(bodyParser.json()); // Parse JSON body
 
