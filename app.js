@@ -8,6 +8,14 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true })); // Parse form data
 app.use(bodyParser.json()); // Parse JSON body
 
+app.get('/', (req, res) => {
+    res.send('DCC Prompt api running');
+});
+
+app.get('/ping', (req, res) => {
+    res.send('Hello, I am up and running.');
+});
+
 app.post("/getPromptResult", async (req, res) => {
     const { query, url, apikey } = req.body;
 
@@ -34,5 +42,5 @@ app.post("/getPromptResult", async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
